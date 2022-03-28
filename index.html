@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <!--https://obedalvarado.pw/blog/crea-un-reproductor-de-musica-con-javascript-html5-y-css/-->
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Music</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel='stylesheet' type='text/css' media='screen' href='css/main.css'>
+    <link rel='stylesheet' type='text/css' media='screen' href='css/input_range.css'>
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto&amp;display=swap">
+       
+       <script>
+          
+        window.console = window.console || function(t) {};
+      </script>
+        
+        <script>
+        if (document.location.search.match(/type=embed/gi)) {
+          window.parent.postMessage("resize", "*");
+        }
+      </script>
+</head>
+
+<body>
+
+    <audio id="player" ontimeupdate="updateProgress();">
+		<source  id="source">	
+		Audio no soportado	
+	  </audio>
+  
+    <div class="container">
+        <div class="iphone neu" id="controls">
+          <div class="title">
+            <div><i class="fas fa-chevron-left"></i></div>
+            <div>NOW PLAYING</div>
+            <div><i class="fas fa-ellipsis-v"></i></div>
+          </div>
+          
+          <div class="volumen">
+            Vol: 
+            <i class="fas fa-volume-down"></i> 
+            <input type="range" name="volumen" id="volumen" min="0" max="1" step="0.01" value="0.75"> 
+            <i class="fas fa-volume-up"></i>
+          </div>
+          <div class="album-cover">
+            <div class="album-overlay"></div>
+            <!--<img src="https://images-na.ssl-images-amazon.com/images/I/810GyyWObmL._SL1400_.jpg" alt="">-->
+            <img src="https://cdn.dribbble.com/users/1069761/screenshots/6526409/b_letter_4x.png?compress=1&resize=248x248&vertical=top" alt="cover">
+            <h2 class="song-title"  id="currentPlay">
+              Name Track
+            </h2>
+            <h3 class="artist-title">
+              Radio en vivo
+            </h3>
+          </div>
+          <div class="buttons">
+                <button class="btn lg red neu"><i class="fas fa-heart"></i></button>
+                <button class="btn lg neu"><i class="fas fa-backward" onclick="prevMusic();"></i></button>
+                <button class="btn lg neu"><i class="fas fa-play" onclick="togglePlay();" id="iconPlay"></i></button>
+                <button class="btn lg neu"><i class="fas fa-forward" onclick="nextMusic();"></i></button>
+            </div>
+          <div class="track neu">
+              <div id="barra" class="barra">&nbsp;</div>
+              <div class="timer" id="timer">&nbsp;</div>
+              <progress id="progress" value="0" max="100" style="display: none;"></progress>
+          </div>
+          
+          <div class="lyrics">
+            <i class="fas fa-angle-up"></i>
+            <span>LYRICS</span>
+          </div>
+        </div>
+      </div>
+      <h3>Estaciones de radio</h3>
+      <div id="playList"></div>
+      <script src='js/main.js'></script>
+</body>
+</html>
